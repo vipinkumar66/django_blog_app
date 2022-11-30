@@ -1,0 +1,25 @@
+{%extends 'bloggy/base.html'%}
+{%block content%}
+<div class="container-fluid" style="margin-top: 20px;">
+    <div class="row">
+        {%for post in posts%}
+            <div class="col-1"></div>
+            <div class="col-2">
+                <img class="rounded-circle account-img" style="height: auto; width: 100%;" src="{{post.author.profile.image.url}}" alt="">
+            </div>
+            <div class="col-7">
+                <div class="row"><h2><a href="{%url 'post-detail' post.id%}">{{post.title}}</a></h2></div>
+                <div class="row">
+                    <div class="col-3"><p>{{post.author}}</p></div>
+                    <div class="col-9"><p>{{post.date_posted|date:"F d, Y"}}</p></div>
+                </div>
+                <div class="row">
+                    <p>{{post.content}}</p>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        <br>
+        {%endfor%}
+    </div>
+</div>
+{%endblock content%}

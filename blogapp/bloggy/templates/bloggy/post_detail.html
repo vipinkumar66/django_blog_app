@@ -1,0 +1,27 @@
+{%extends 'bloggy/base.html'%}
+{%block content%}
+<div class="container-fluid" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <img class="rounded-circle account-img" style="height: auto; width: 100%;" src="{{post.author.profile.image.url}}" alt="">
+        </div>
+        <div class="col-7">
+            <div class="row"><h2>{{object.title}}</h2></div>
+            <div class="row">
+                <div class="col-3"><p>{{object.author}}</p></div>
+                <div class="col-9"><p>{{object.date_posted|date:"F d, Y"}}</p></div>
+                {% if object.author == user %}
+                    <a class="btn btn-secondary btn-small mt-1 mb-1" href="{%url 'post-update' object.id%}">Update</a>
+                    <a class="btn btn-danger btn-small mt-1 mb-1" href="{%url 'post-delete' object.id%}">Delete</a>
+                {%endif%}
+            </div>
+            <div class="row">
+                <p>{{object.content}}</p>
+
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+{%endblock content%}
